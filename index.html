@@ -1,94 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glowing Aura</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Glowing Aura</title>
 
-    header {
-      background: white;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 2px solid #eee;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
 
-    header img {
-      height: 55px;
-    }
+  /* HEADER */
+  header {
+    background: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid #eee;
+  }
 
-    h1 {
-      font-size: 32px;
-      margin: 0;
-      font-weight: 700;
-    }
+  header img {
+    height: 55px;
+    filter: drop-shadow(0 0 10px #8df);
+  }
 
-    .container{
-      width: 90%;
-      max-width: 1100px;
-      margin: 40px auto;
-    }
+  h1 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 700;
+  }
 
-    .product {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+  /* CART ICON */
+  .cart {
+    margin-left: auto;
+    font-size: 18px;
+    background: #e8f4ff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
 
-    .product img {
-      width: 140px;
-      height: auto;
-      border-radius: 10px;
-    }
+  /* MAIN CONTAINER */
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+  }
 
-    .product h2 {
-      margin: 0 0 10px 0;
-    }
+  /* PRODUCT CARD */
+  .product {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
 
-  </style>
+  .product img {
+    width: 140px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    filter: drop-shadow(0 0 12px #aef);
+  }
+
+  .product img:hover {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 18px #bdf);
+  }
+
+  .product h2 {
+    margin: 0 0 10px 0;
+  }
+
+  .price {
+    font-weight: 700;
+    margin-top: 5px;
+    font-size: 18px;
+  }
+
+  .add-btn {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background: #6bbcff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .add-btn:hover {
+    background: #55aaff;
+  }
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER WITH LOGO -->
-  <header>
-    <img src="glowing aura logo.png" alt="Glowing Aura Logo" />
-    <h1>Glowing Aura</h1>
-  </header>
+<!-- HEADER -->
+<header>
+  <img src="glowing aura logo.png" alt="Glowing Aura Logo">
+  <h1>Glowing Aura</h1>
 
-  <div class="container">
-
-    <!-- LUNA MOON NIGHT LIGHT -->
-    <div class="product">
-      <img src="moon-nightlight.jpg" alt="Luna Moon Night Light" />
-      <div>
-        <h2>Luna Moon Night Light</h2>
-        <p>A soft glowing 3D moon that lights up your room with relaxing ambient light.</p>
-      </div>
-    </div>
-
-    <!-- GLOWING AURA STICKER -->
-    <div class="product">
-      <img src="glowing aura logo.png" alt="Glowing Aura Sticker" />
-      <div>
-        <h2>Glowing Aura Sticker</h2>
-        <p>High-quality vinyl sticker featuring the Glowing Aura brand logo.</p>
-      </div>
-    </div>
-
+  <div class="cart">
+    🛒 Cart: <span id="cart-count">0</span> items — $<span id="cart-total">0.00</span>
   </div>
+</header>
+
+<div class="container">
+
+  <!-- PRODUCT 1: MOON LIGHT -->
+  <div class="product">
+    <img src="moon-nightlight.jpg" alt="Luna Moon Night Light">
+    <div>
+      <h2>Luna Moon Night Light</h2>
+      <p>A soft glowing 3D moon that lights up your room with relaxing ambient light.</p>
+      <div class="price">$14.99</div>
+      <button class="add-btn" onclick="addToCart('Luna Moon Night Light', 14.99)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <!-- PRODUCT 2: GLOWING AURA STICKER -->
+  <div class="product">
+    <img src="glowing aura logo.png" alt="Glowing Aura Sticker">
+    <div>
+      <h2>Glowing Aura Sticker</h2>
+      <p>High-quality vinyl sticker featuring the Glowing Aura brand logo.</p>
+      <div class="price">$2.99</div>
+      <button class="add-btn" onclick="addToCart('Glowing Aura Sticker', 2.99)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ADD TO CART SYSTEM (JavaScript) -->
+<script>
+  let cart = JSON.parse(localStorage.getItem("glowingCart")) || {
+    count: 0,
+    total: 0,
+    items: []
+  };
+
+  function updateDisplay() {
+    document.getElementById("cart-count").textContent = cart.count;
+    document.getElementById("cart-total").textContent = cart.total.toFixed(2);
+  }
+
+  function addToCart(name, price) {
+    cart.count++;
+    cart.total += price;
+    cart.items.push({ name, price });
+
+    localStorage.setItem("glowingCart", JSON.stringify(cart));
+    updateDisplay();
+  }
+
+  updateDisplay();
+</script>
 
 </body>
 </html>
